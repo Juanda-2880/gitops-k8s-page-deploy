@@ -87,7 +87,7 @@ jobs:
         run: |
           git pull
           # Actualiza el archivo deployment.yaml dentro de la carpeta ArgoCD
-          sed -i "s|image: juandau2880/overwatchfanpage:.*$|image: juandau2880/overwatchfanpage:v${{ github.run_number }}|" ArgoCD/deployment.yaml
+          sed -i "s|image: juandau2880/overwatchfanpage:.*$|image: juandau2880/overwatchfanpage:v${{ github.run_number }}|" ArgoCD/manifests/deployment.yaml
           
           # Verificación (Opcional, para ver en logs)
           cat ArgoCD/manifests/deployment.yaml | grep "image:"
