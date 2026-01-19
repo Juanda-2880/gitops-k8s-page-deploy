@@ -15,7 +15,7 @@ spec:
       containers:
       - name: overwatch-fanpage-container
 
-        image: juandau2880/overwatchfanpage:v10
+        image: juandau2880/overwatchfanpage:v11
         
         imagePullPolicy: Always
         
