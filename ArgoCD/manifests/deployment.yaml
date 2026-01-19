@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: overwatch-fanpage-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: overwatch-fanpage
+  template:
+    metadata:
+      labels:
+        app: overwatch-fanpage
+    spec:
+      containers:
+      - name: overwatch-fanpage-container
+
+        image: juandau2880/overwatchfanpage:latest
+        
+        imagePullPolicy: Always
+        
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: overwatch-fanpage-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: overwatch-fanpage
+  ports:
+    - protocol: TCP
+      port: 80       
+      targetPort: 80  
