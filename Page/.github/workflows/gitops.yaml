@@ -1,0 +1,23 @@
+name: "Run SAST Scan on Overwatch Fan Page"
+
+on:
+  push:
+    branches:
+      - main
+  
+jobs:
+
+  sonarqube_sast_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
